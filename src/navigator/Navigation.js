@@ -6,8 +6,6 @@ import InnerProfileScreen from '../views/dashboard/screens/InnerProfileScreen'
 import InnerChangePasswordScreen from '../views/dashboard/screens/InnerChangePasswordScreen'
 import InnerAddPostScreen from '../views/dashboard/screens/InnerAddPostScreen'
 import InnerViewPostScreen from '../views/dashboard/screens/InnerViewPostScreen'
-import InnerAllPostsScreen from '../views/dashboard/screens/InnerAllPostsScreen'
-import InnerMyPostScreen from '../views/dashboard/screens/InnerMyPostScreen'
 import { View, Text } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -45,8 +43,6 @@ function Navigation() {
         <Stack.Screen name="InnerProfileScreen" component={InnerProfileScreen} />
         <Stack.Screen name="InnerAddPostScreen" component={InnerAddPostScreen} />
         <Stack.Screen name="InnerChangePasswordScreen" component={InnerChangePasswordScreen} />
-        <Stack.Screen name="InnerAllPostsScreen" component={InnerAllPostsScreen} />
-        <Stack.Screen name="InnerMyPostScreen" component={InnerMyPostScreen} />
       </Stack.Navigator>
     )
   }

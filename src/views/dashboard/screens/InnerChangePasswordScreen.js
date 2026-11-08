@@ -16,10 +16,8 @@ function InnerChangePasswordScreen(props) {
   const [errorMessage, setErrorMessage] = useState(null);
   const [oldpassword, setOldPassword] = useState(false);
   const [newpassword, setNewPassword] = useState(false);
-  const [confirmPassword, setConfirmPassword] = useState(null);
   const [showProfileOldPassword, setShowProfileOldPassword] = useState(false);
   const [showProfileNewPassword, setShowProfileNewPassword] = useState(false);
-  const [showProfileConfirmPassword, setShowProfileConfirmPassword] = useState(false);
   function UpdatePwdSubmit() {
     setErrorMessage(null);
     if (oldpassword == null || oldpassword == undefined || oldpassword == ''){
@@ -27,12 +25,6 @@ function InnerChangePasswordScreen(props) {
       return;
     } else if (newpassword == null || newpassword == undefined || newpassword == '') {
       alert('Enter New Password');
-      return;
-    } else if (confirmPassword == null || confirmPassword == undefined || confirmPassword == '') {
-      alert('Enter Confirm New Password');
-      return;
-    } else if (newpassword !== confirmPassword) {
-      alert('New Password & Confirm Password Mismatch');
       return;
     }
     else {
@@ -50,7 +42,7 @@ function InnerChangePasswordScreen(props) {
             alert('Password Changed Successfully');
             logOut();
           } else {
-            alert('Old Password Invalid');
+            alert('Failure');
           }
         })
         .catch(err => {
@@ -68,14 +60,14 @@ function InnerChangePasswordScreen(props) {
       }}>
       <StatusBar
         animated={true}
-        backgroundColor={'#181a1b'}
+        backgroundColor={'#0065FF'}
         hidden={false}
       />
       <View
         style={{
           height: (HEIGHT * 8) / 100,
           width: WIDTH,
-          backgroundColor: '#181a1b',
+          backgroundColor: '#0065FF',
           flexDirection: 'row',
           paddingHorizontal: 10,
         }}>
@@ -118,9 +110,12 @@ function InnerChangePasswordScreen(props) {
           paddingHorizontal: 20,
           marginTop: 20,
         }}>
-        <View style={{marginTop: 10}}>
+        <View style={{marginTop: 20}}>
           <View style={{}}>
-            <View style={{}}>
+            <View style={{marginTop: 10}}>
+              <Text style={{fontFamily: 'Lato', color: '#000'}}>
+                Old Password
+              </Text>
               <View
                 style={{
                   marginTop: 10,
@@ -191,6 +186,10 @@ function InnerChangePasswordScreen(props) {
           </View>
 
           <View style={{marginTop: 20}}>
+            <Text style={{fontFamily: 'Lato', color: '#000'}}>
+              New Password
+            </Text>
+
             <View
               style={{
                 marginTop: 10,
@@ -258,75 +257,6 @@ function InnerChangePasswordScreen(props) {
               </View>
             </View>
           </View>
-
-          <View style={{marginTop: 20}}>
-            <View
-              style={{
-                marginTop: 10,
-                flexDirection: 'row',
-                height: 50,
-                width: '100%',
-                justifyContent: 'center',
-                borderRadius: 10,
-                elevation: 5,
-                backgroundColor: '#fff',
-              }}>
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '20%',
-                  height: '100%',
-                  borderTopLeftRadius: 10,
-                  borderBottomLeftRadius: 10,
-                }}>
-                <MaterialCommunityIcons
-                  name="lock"
-                  size={20}
-                  style={{fontFamily: 'Lato', color: '#000'}}
-                />
-              </View>
-              <View
-                style={{
-                  flex: 1,
-                  width: '20%',
-                  height: '100%',
-                  borderTopRightRadius: 10,
-                  borderBottomRightRadius: 10,
-                }}>
-                <TextInput
-                  placeholderTextColor="#000"
-                  style={{color: '#000'}}
-                  placeholder="Confirm New Password"
-                  secureTextEntry={!showProfileConfirmPassword}
-                  onChangeText={text => {
-                    setErrorMessage(null);
-                    setConfirmPassword(text);
-                  }}
-                />
-              </View>
-              <View
-                style={{
-                  justifyContent: 'center',
-                  alignItems: 'center',
-                  width: '20%',
-                  height: '100%',
-                  borderTopLeftRadius: 10,
-                  borderBottomLeftRadius: 10,
-                }}>
-                <Ionicons
-                  name={
-                    showProfileConfirmPassword ? 'eye-outline' : 'eye-off-outline'
-                  }
-                  size={20}
-                  style={{fontFamily: 'Lati', color: '#000'}}
-                  onPress={() => {
-                    setShowProfileConfirmPassword(!showProfileConfirmPassword);
-                  }}
-                />
-              </View>
-            </View>
-          </View>
           
           <TouchableOpacity
             onPress={() => {
@@ -342,10 +272,10 @@ function InnerChangePasswordScreen(props) {
                 alignItems: 'center',
                 height: 50,
                 width: 200,
-                borderRadius: 50,
+                borderRadius: 15,
                 alignSelf: 'center',
                 marginTop: 20,
-                backgroundColor: '#e9b04b'
+                backgroundColor: '#0065FF'
               }}>
               <View style={{paddingLeft: 0}}>
                 <Text style={{fontSize: 18, color: '#fff'}}>Update</Text>

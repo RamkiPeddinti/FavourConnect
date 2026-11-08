@@ -16,6 +16,42 @@ function InnerHomeScreen(props) {
     Urls,
   );
   const [modalVisible, setModalVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [fillcards, setFillCards] = useState(null);
+  const [loading, setloading] = useState(true);
+
+  useEffect(() => {
+    const unsubscribe = navigation.addListener('focus', () => {
+      getInfo();
+    });
+
+    return unsubscribe;
+  }, [navigation]);
+
+  useEffect(() => {
+    getInfo()
+  }, []);
+
+  function getInfo() {
+    setloading(true);
+    let params = {
+      userId: 0,
+      feedId: 0,
+    }
+    axios
+      .post(api + url.getfeed, params)
+      .then(res => {
+        if (res.data.code == 0) {
+          setFillCards(res.data.data);
+          setloading(false);
+        } else {
+          alert('Not Bind');
+        }
+      })
+      .catch(err => {
+        setErrorMessage(err.message);
+      });
+  }
 
   function Header() {
     return (
@@ -23,7 +59,7 @@ function InnerHomeScreen(props) {
         style={{
           height: (HEIGHT * 8) / 100,
           width: WIDTH,
-          backgroundColor: '#181a1b',
+          backgroundColor: '#0065FF',
           justifyContent: 'center',
           alignItems: 'center',
         }}>
@@ -69,61 +105,111 @@ function InnerHomeScreen(props) {
       }}>
       <StatusBar
         animated={true}
-        backgroundColor={'#181a1b'}
+        backgroundColor={'#0065FF'}
         hidden={false}
       />
       <Header />
 
-      <View style={{flexDirection: 'row', paddingHorizontal: 20,}}>
-      <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('InnerAddPostScreen');
-          }}
-          style={{
-            height: 50,
-            width: '45%',
-            backgroundColor: '#e9b04b',
-            borderRadius: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 30,
-          }}>
-          <Text
+      <ScrollView>
+        {!loading ? (
+          <View
             style={{
-              color: '#fff',
-              fontSize: 16,
-              fontFamily: 'Lato',
-              top: -2,
+              backgroundColor: '#fff',
+              borderBottomWidth: 1,
+              borderBottomColor: '#ccc',
+              paddingHorizontal: 20,
+              paddingTop: 10,
+              paddingBottom: 10,
             }}>
-            Do a favour
-          </Text>
-        </TouchableOpacity>
-        <View style={{ height: 50,width: '10%',}}></View>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('InnerAllPostsScreen');
-          }}
-          style={{
-            height: 50,
-            width: '45%',
-            backgroundColor: '#e9b04b',
-            borderRadius: 50,
-            justifyContent: 'center',
-            alignItems: 'center',
-            marginTop: 30,
-          }}>
-          <Text
+            {fillcards &&
+              fillcards.map((item, index) => {
+                return (
+                  <TouchableOpacity
+                    onPress={
+                      () => {
+                        if (item.type == 'Favour') {
+                          navigation.navigate('InnerViewPostScreen', { id: item.id });
+                        }
+                      }
+                    }
+                    key={index}
+                    style={{
+                      width: '100%',
+                      borderRadius: 10,
+                      elevation: 5,
+                      backgroundColor: '#fff',
+                      paddingRight: 15,
+                      marginTop: 20,
+                      paddingVertical: 10,
+                      borderLeftWidth: 3,
+                      borderLeftColor: '#0065FF',
+                    }}>
+                    <View style={{ paddingLeft: 17 }}>
+                      <View
+                        style={{
+                          flexDirection: 'row',
+                          justifyContent: 'space-between',
+                          paddingVertical: 5,
+                        }}>
+                        <View
+                          style={{
+                            flexDirection: 'row',
+                            alignItems: 'center',
+                          }}>
+                          <View
+                            style={{
+                              height: (WIDTH * 40) / 100,
+                              width: (WIDTH * 80) / 100,
+                              borderRadius: (WIDTH * 5) / 100 / 2,
+                              backgroundColor: 'lightblue',
+                              marginTop: 5,
+                            }}>
+                            <Image
+                              source={{
+                                uri: `${item.preview}`,
+                              }}
+                              style={{
+                                borderRadius: (WIDTH * 5) / 100 / 2,
+                                height: (WIDTH * 40) / 100,
+                                width: (WIDTH * 80) / 100,
+                              }}
+                            />
+                          </View>
+                        </View>
+                      </View>
+                      <Text
+                        style={{
+                          fontSize: 17,
+                          fontFamily: 'Lato',
+                          color: '#455A64',
+                          fontWeight: 700,
+                          marginTop: 8,
+                          paddingLeft: 5,
+                        }}>
+                        {item.title}
+                      </Text>
+                    </View>
+                  </TouchableOpacity>
+                )
+              })}
+          </View>
+        ) : (
+          <View
             style={{
-              color: '#fff',
-              fontSize: 16,
-              fontFamily: 'Lato',
-              top: -2,
+              height: 100,
+              width: '100%',
+              justifyContent: 'center',
+              alignItems: 'center',
+              backgroundColor: '#fff',
             }}>
-            Need a favor
-          </Text>
-        </TouchableOpacity>
-      </View>
-
+            <LottieView
+              source={require('../../../assets/lottie/loading.json')}
+              autoPlay
+              loop
+            />
+          </View>
+        )}
+      </ScrollView>
 
       <MenuDrawer
         open={modalVisible}

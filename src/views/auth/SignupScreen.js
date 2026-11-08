@@ -29,14 +29,8 @@ function SignupScreen(props) {
     } else if (mobileno == null || mobileno == undefined || mobileno == '') {
       alert('Enter Mobile Number');
       return;
-    } else if (mobileno.length < 10 || mobileno.length > 10 || mobileno < 6000000000) {
-      alert('Enter Correct Mobile Number');
-      return;
     } else if (email == null || email == undefined || email == '') {
-      alert('Enter Email ID');
-      return;
-    } else if (email.indexOf('@') == -1 || email.indexOf('.') == -1){
-      alert('Enter Valid Email ID');
+      alert('Enter Email');
       return;
     } else if (username == null || username == undefined || username == ''){
       alert('Enter User Name');
@@ -110,12 +104,37 @@ function SignupScreen(props) {
                 }
               }
             }) 
-          }
-          else if (res.data.code == -1) {
-            alert('User already exist');
-          }
-          else {
-            alert('Something Went Worng!');
+            // let data = res.data.data
+            // let userdetails = {
+            //   id: data.id,
+            //   fullName: data.fullName,
+            //   mobileNumber: data.mobileNumber,
+            //   email: data.email,
+            //   userName: data.userName,
+            //   password: data.password,
+            //   role: data.role,
+            //   education: data.education,
+            //   hobbies: data.hobbies
+            // }
+            // console.log(res.data)
+            // try {
+            //   await AsyncStorage.setItem('GETLOGGEDUSER', JSON.stringify(userdetails));
+            //   try {
+            //     const value = await AsyncStorage.getItem('GETLOGGEDUSER');
+            //     if (value !== null) {
+            //       let data = JSON.parse(value);
+            //       setUser(data);
+            //     } else {
+            //       // console.log('No data found');
+            //     }
+            //   } catch (e) {
+            //     // console.log(e.message);
+            //   }
+            // } catch (e) {
+            //   setErrorMessage(e.message);
+            // }
+          } else {
+            alert('Please Try Again');
           }
         })
         .catch(err => {
@@ -126,49 +145,36 @@ function SignupScreen(props) {
   }
   return (
     <View style={{ width: "100%", height: "100%" }}>
-       <StatusBar
-        animated={true}
-        backgroundColor={'#181a1b'}
-        hidden={false}
-      />
-      <View style={{ height: "30%", width: "100%", backgroundColor: '#181a1b' }}>
-      <View style={{height: "100%", width: "100%",paddingHorizontal: 20, alignItems:'center', justifyContent:'center'}}>
+      <View style={{ height: "30%", width: "100%", backgroundColor: '#fff' }}>
         <Image
           style={{
-            height: '25%',
-            width: '25%',
+            height: '100%',
+            width: '100%',
             resizeMode: 'contain',
             marginTop: '5%',
           }}
-          source={require('../assests/Images/connect.png')}
+          source={require('../assests/Images/register.jpg')}
         />
-         <View>
-            <Text style={{color:'#fff',fontFamily: 'Lato', fontWeight: 700, fontSize: 50}}>FavorConnect</Text>
-            </View>
-            <View style={{alignItems:'center'}}>
-            <Text style={{color:'#e9b04b',fontFamily: 'Lato', fontWeight: 700, fontSize: 16,alignItems:'center'}}>Connect, Help, and Get Help</Text>
-          </View>
       </View>
-      </View>
-      <View style={{ height: "60%", width: "100%", padding: 20, backgroundColor: '#181a1b' }}>
+      <View style={{ height: "60%", width: "100%", padding: 20, backgroundColor: '#fff' }}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start', width: '100%', alignItems: 'flex-start' }}>
-            <Text style={{ fontFamily: 'Lato', fontWeight: 700, fontSize: 35, color: '#fff' }}>Sign up</Text>
+            <Text style={{ fontFamily: 'Lato', fontWeight: 700, fontSize: 35, color: '#172B4D' }}>Sign up</Text>
           </View>
           <View style={{ marginTop: 10, alignItems: 'flex-start', justifyContent: 'flex-start', flexDirection: 'row' }}>
-            <Text style={{ color: '#fff', fontFamily: 'Lato' }}>Have an account? </Text>
+            <Text style={{ color: '#627087', fontFamily: 'Lato' }}>Have an account? </Text>
             <TouchableOpacity onPress={() => {
               navigation.navigate('Login');
-            }}><Text style={{ color: '#e9b04b', fontFamily: 'Lato', fontWeight: 700 }}>Login</Text></TouchableOpacity>
+            }}><Text style={{ color: '#0052CC', fontFamily: 'Lato', fontWeight: 700 }}>Login</Text></TouchableOpacity>
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
+              placeholderTextColor="#7A869A"
               placeholder="Full Name"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
@@ -176,31 +182,29 @@ function SignupScreen(props) {
               }}
             />
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
+              placeholderTextColor="#7A869A"
               placeholder="Mobile Number"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
                 setMobileno(text);
               }}
-              keyboardType="numeric"
-                maxLength={10}
             />
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
-              placeholder="Email ID"
+              placeholderTextColor="#7A869A"
+              placeholder="Email"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
@@ -208,14 +212,14 @@ function SignupScreen(props) {
               }}
             />
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
+              placeholderTextColor="#7A869A"
               placeholder="User Name"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
@@ -227,8 +231,8 @@ function SignupScreen(props) {
             height: 50,
             width: '100%',
             borderWidth: 1,
-            borderRadius: 7,
-            borderColor: '#fff',
+            borderRadius: 10,
+            borderColor: '#ededed',
             marginTop: 15,
             flexDirection: 'row',
             justifyContent: 'space-between',
@@ -236,9 +240,9 @@ function SignupScreen(props) {
           }}>
             <View style={{ width: '85%' }}>
               <TextInput
-                placeholderTextColor="#fff"
+                placeholderTextColor="#7A869A"
                 style={{
-                  color: '#fff',
+                  color: '#000',
                   fontFamily: 'Lato',
                   paddingLeft: 20,
                   width: '80%',
@@ -264,7 +268,7 @@ function SignupScreen(props) {
                         ? 'eye-outline'
                         : 'ios-eye-off-outline'
                     }
-                    color="#fff"
+                    color="#7A869A"
                     size={25}
                     onPress={() => {
                       setPasswordShown(!passwordShown);
@@ -272,14 +276,14 @@ function SignupScreen(props) {
                   />
             </View>
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
+              placeholderTextColor="#7A869A"
               placeholder="Role"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
@@ -287,14 +291,14 @@ function SignupScreen(props) {
               }}
             />
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
+              placeholderTextColor="#7A869A"
               placeholder="Education"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
@@ -302,14 +306,14 @@ function SignupScreen(props) {
               }}
             />
           </View>
-          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+          <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
             <TextInput
-              placeholderTextColor="#fff"
+              placeholderTextColor="#7A869A"
               placeholder="Hobbies"
               style={{
                 paddingLeft: 20,
                 fontFamily: 'Lato',
-                color: '#fff',
+                color: '#000',
               }}
               onChangeText={text => {
                 setErrorMessage(null);
@@ -319,7 +323,7 @@ function SignupScreen(props) {
           </View>
         </ScrollView>
       </View>
-      <View style={{ height: "10%", width: "100%", padding: 20, backgroundColor: '#181a1b' }}>
+      <View style={{ height: "10%", width: "100%", padding: 20, backgroundColor: '#fff' }}>
         <TouchableOpacity
           onPress={() => {
             {
@@ -329,8 +333,8 @@ function SignupScreen(props) {
           style={{
             height: 50,
             width: '100%',
-            borderRadius: 20,
-            backgroundColor: '#e9b04b',
+            borderRadius: 10,
+            backgroundColor: '#0065FF',
             alignItems: 'center',
             justifyContent: 'center',
           }}>

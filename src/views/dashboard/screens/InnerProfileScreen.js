@@ -63,14 +63,8 @@ function InnerProfileScreen(props) {
     } else if (mobileno == null || mobileno == undefined || mobileno == '') {
       alert('Enter Mobile Number');
       return;
-    } else if (mobileno.length < 10 || mobileno.length > 10 || mobileno < 6000000000) {
-      alert('Enter Correct Mobile Number');
-      return;
     } else if (email == null || email == undefined || email == '') {
-      alert('Enter Email ID');
-      return;
-    } else if (email.indexOf('@') == -1 || email.indexOf('.') == -1){
-      alert('Enter Valid Email ID');
+      alert('Enter Email');
       return;
     } else if (role == null || role == undefined || role == '') {
       alert('Enter Role');
@@ -119,14 +113,14 @@ function InnerProfileScreen(props) {
       }}>
       <StatusBar
         animated={true}
-        backgroundColor={'#181a1b'}
+        backgroundColor={'#0065FF'}
         hidden={false}
       />
       <View
         style={{
           height: (HEIGHT * 8) / 100,
           width: WIDTH,
-          backgroundColor: '#181a1b',
+          backgroundColor: '#0065FF',
           flexDirection: 'row',
           paddingHorizontal: 10,
         }}>
@@ -161,7 +155,7 @@ function InnerProfileScreen(props) {
       <View
         style={{
           widht: '100%',
-          height: (HEIGHT * 78) / 100,
+          height: (HEIGHT * 80) / 100,
           backgroundColor: '#fff',
           marginTop: 5,
         }}>
@@ -278,8 +272,6 @@ function InnerProfileScreen(props) {
                   onChangeText={text => {
                     setMobileno(text);
                   }}
-                  keyboardType="numeric"
-                  maxLength={10}
                 />
               </View>
             </View>
@@ -320,7 +312,7 @@ function InnerProfileScreen(props) {
                     top: -2,
                     marginLeft: 10,
                   }}>
-                  E-mail ID
+                  E-mail
                 </Text>
               </View>
               <View
@@ -567,7 +559,7 @@ function InnerProfileScreen(props) {
       <View
         style={{
           widht: '100%',
-          height: (HEIGHT * 14) / 100,
+          height: (HEIGHT * 12) / 100,
           backgroundColor: '#fff',
           marginTop: 5,
           paddingHorizontal: 20 
@@ -579,8 +571,8 @@ function InnerProfileScreen(props) {
           style={{
             height: 50,
             width: '100%',
-            backgroundColor: '#e9b04b',
-            borderRadius: 50,
+            backgroundColor: '#0065FF',
+            borderRadius: 10,
             justifyContent: 'center',
             alignItems: 'center',
             marginTop: 30,

@@ -118,14 +118,14 @@ function InnerAddPostScreen(props) {
       }}>
       <StatusBar
         animated={true}
-        backgroundColor={'#181a1b'}
+        backgroundColor={'#0065FF'}
         hidden={false}
       />
       <View
         style={{
           height: (HEIGHT * 8) / 100,
           width: WIDTH,
-          backgroundColor: '#181a1b',
+          backgroundColor: '#0065FF',
           flexDirection: 'row',
           paddingHorizontal: 10,
         }}>
@@ -209,15 +209,12 @@ function InnerAddPostScreen(props) {
                     <Dropdown
                       style={[
                         {
-                          width: '100%',
                           height: '100%',
                           borderRadius: 10,
                           paddingHorizontal: 8,
-                          color:'#000',
+                          width: '100%',
                         },
                       ]}
-                      containerStyle={{backgroundColor: '#eee'}}
-                      itemTextStyle={{color: '#000'}}
                       placeholderStyle={{ color: '#000' }}
                       selectedTextStyle={{ color: '#000' }}
                       iconStyle={{ color: '#000' }}
@@ -287,11 +284,8 @@ function InnerAddPostScreen(props) {
                         borderRadius: 10,
                         paddingHorizontal: 8,
                         width: '100%',
-                        color:'#000',
                       },
                     ]}
-                    containerStyle={{backgroundColor: '#eee'}}
-                    itemTextStyle={{color: '#000'}}
                     placeholderStyle={{ color: '#000' }}
                     selectedTextStyle={{ color: '#000' }}
                     iconStyle={{ color: '#000' }}
@@ -511,10 +505,10 @@ function InnerAddPostScreen(props) {
                   alignItems: 'center',
                   height: 50,
                   width: 200,
-                  borderRadius: 50,
+                  borderRadius: 15,
                   alignSelf: 'center',
                   marginTop: 20,
-                  backgroundColor: '#e9b04b'
+                  backgroundColor: '#0065FF'
                 }}>
                 <View style={{ paddingLeft: 0 }}>
                   <Text style={{ fontSize: 18, color: '#fff' }}>Add Post</Text>

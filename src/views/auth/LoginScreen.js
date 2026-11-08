@@ -74,7 +74,7 @@ function LoginScreen(props) {
               setErrorMessage(e.message);
             }
           } else {
-            alert('Invalid Login Credentials');
+            alert('Invalid Credentials');
           }
         })
         .catch(err => {
@@ -161,65 +161,42 @@ function LoginScreen(props) {
   }
   return (
     <View style={{ width: "100%", height: "100%" }}>
-        <StatusBar
-        animated={true}
-        backgroundColor={'#181a1b'}
-        hidden={false}
-      />
-      <View style={{ height: "30%", width: "100%", backgroundColor: '#181a1b' }}>
+      <View style={{ height: "30%", width: "100%", backgroundColor: '#fff' }}>
         {updatestatus.login ? (
-          <>
-          <View style={{height: "100%", width: "100%",paddingHorizontal: 20, alignItems:'center', justifyContent:'center'}}>
           <Image
             style={{
-              height: '25%',
-              width: '25%',
+              height: '100%',
+              width: '100%',
               resizeMode: 'contain',
               marginTop: '5%',
             }}
-            source={require('../assests/Images/connect.png')}
+            source={require('../assests/Images/login.jpg')}
           />
-          <View>
-            <Text style={{color:'#fff',fontFamily: 'Lato', fontWeight: 700, fontSize: 50}}>FavorConnect</Text>
-            </View>
-            <View style={{alignItems:'center'}}>
-            <Text style={{color:'#e9b04b',fontFamily: 'Lato', fontWeight: 700, fontSize: 16,alignItems:'center'}}>Connect, Help, and Get Help</Text>
-          </View>
-          </View>
-          </>
         ) :
-        <View style={{height: "100%", width: "100%",paddingHorizontal: 20, alignItems:'center', justifyContent:'center'}}>
           <Image
             style={{
-              height: '25%',
-              width: '25%',
+              height: '100%',
+              width: '100%',
               resizeMode: 'contain',
               marginTop: '5%',
             }}
-            source={require('../assests/Images/connect.png')}
+            source={require('../assests/Images/forgot-password.png')}
           />
-          <View>
-          <Text style={{color:'#fff',fontFamily: 'Lato', fontWeight: 700, fontSize: 50}}>FavorConnect</Text>
-          </View>
-          <View style={{alignItems:'center'}}>
-          <Text style={{color:'#e9b04b',fontFamily: 'Lato', fontWeight: 700, fontSize: 16,alignItems:'center'}}>Connect, Help, and Get Help</Text>
-        </View>
-        </View>
         }
       </View>
-      <View style={{ height: "70%", width: "100%", padding: 20, backgroundColor: '#181a1b' }}>
+      <View style={{ height: "70%", width: "100%", padding: 20, backgroundColor: '#fff' }}>
         <ScrollView>
           <View style={{ flexDirection: 'row', justifyContent: 'flex-start', width: '100%', alignItems: 'flex-start' }}>
 
             {updatestatus.login ?
-              (<Text style={{ fontFamily: 'Lato', fontWeight: 700, fontSize: 35, color: '#fff' }}>Login</Text>) :
-              (<Text style={{ fontFamily: 'Lato', fontWeight: 700, fontSize: 35, color: '#fff' }}>Forgot Password</Text>)
+              (<Text style={{ fontFamily: 'Lato', fontWeight: 700, fontSize: 35, color: '#172B4D' }}>Login</Text>) :
+              (<Text style={{ fontFamily: 'Lato', fontWeight: 700, fontSize: 35, color: '#172B4D' }}>Forgot Password</Text>)
             }
 
           </View>
           {updatestatus.login ? (
             <>
-              <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 7, borderColor: '#fff', marginTop: 15, }}>
+              <View style={{ width: '100%', height: 50, alignSelf: 'center', borderWidth: 1, borderRadius: 10, borderColor: '#ededed', marginTop: 15, }}>
                 <TextInput
                   onFocus={() => {
                     setFocused(true);
@@ -227,12 +204,12 @@ function LoginScreen(props) {
                   onEndEditing={() => {
                     setFocused(false);
                   }}
-                  placeholderTextColor="#fff"
+                  placeholderTextColor="#7A869A"
                   placeholder="Enter User Name"
                   style={{
                     paddingLeft: 20,
                     fontFamily: 'Lato',
-                    color: '#fff',
+                    color: '#000',
                   }}
                   onChangeText={text => {
                     setErrorMessage(null);
@@ -244,8 +221,8 @@ function LoginScreen(props) {
                 height: 50,
                 width: '100%',
                 borderWidth: 1,
-                borderRadius: 7,
-                borderColor: '#fff',
+                borderRadius: 10,
+                borderColor: '#ededed',
                 marginTop: 15,
                 flexDirection: 'row',
                 justifyContent: 'space-between',
@@ -259,9 +236,9 @@ function LoginScreen(props) {
                     onEndEditing={() => {
                       setFocused(false);
                     }}
-                    placeholderTextColor="#fff"
+                    placeholderTextColor="#7A869A"
                     style={{
-                      color: '#fff',
+                      color: '#000',
                       fontFamily: 'Lato',
                       paddingLeft: 20,
                       width: '80%',
@@ -287,7 +264,7 @@ function LoginScreen(props) {
                         ? 'eye-outline'
                         : 'ios-eye-off-outline'
                     }
-                    color="#fff"
+                    color="#7A869A"
                     size={25}
                     onPress={() => {
                       setPasswordShown(!passwordShown);
@@ -312,7 +289,7 @@ function LoginScreen(props) {
                   }}>
                   <Text
                     style={{
-                      color: '#e9b04b',
+                      color: '#0052CC',
                       fontFamily: 'Lato',
                       fontWeight: 600,
                       fontSize: 14
@@ -332,8 +309,8 @@ function LoginScreen(props) {
                   width: '100%',
                   alignSelf: 'center',
                   borderWidth: 1,
-                  borderRadius: 7,
-                  borderColor: '#fff',
+                  borderRadius: 10,
+                  borderColor: '#ededed',
                   marginTop: 10,
                 }}>
                 <TextInput
@@ -343,12 +320,12 @@ function LoginScreen(props) {
                   onEndEditing={() => {
                     setFocused(false);
                   }}
-                  placeholderTextColor="#fff"
+                  placeholderTextColor="#7A869A"
                   placeholder="Email Address"
                   style={{
                     paddingLeft: 20,
                     fontFamily: 'lato',
-                    color: '#fff',
+                    color: '#000',
                   }}
                   onChangeText={text => {
                     setErrorMessage(null);
@@ -364,8 +341,8 @@ function LoginScreen(props) {
                     width: '100%',
                     alignSelf: 'center',
                     borderWidth: 1,
-                    borderRadius: 7,
-                    borderColor: '#fff',
+                    borderRadius: 10,
+                    borderColor: '#ededed',
                     marginTop: 10,
                   }}>
                   <TextInput
@@ -375,12 +352,12 @@ function LoginScreen(props) {
                     onEndEditing={() => {
                       setFocused(false);
                     }}
-                    placeholderTextColor="#fff"
+                    placeholderTextColor="#7A869A"
                     placeholder="Code"
                     style={{
                       paddingLeft: 20,
                       fontFamily: 'lato',
-                      color: '#fff',
+                      color: '#000',
                     }}
                     onChangeText={text => {
                       setErrorMessage(null);
@@ -394,8 +371,8 @@ function LoginScreen(props) {
                     width: '100%',
                     alignSelf: 'center',
                     borderWidth: 1,
-                    borderRadius: 7,
-                    borderColor: '#fff',
+                    borderRadius: 10,
+                    borderColor: '#ededed',
                     marginTop: 10,
                   }}>
                   <TextInput
@@ -405,12 +382,12 @@ function LoginScreen(props) {
                     onEndEditing={() => {
                       setFocused(false);
                     }}
-                    placeholderTextColor="#fff"
+                    placeholderTextColor="#7A869A"
                     placeholder="New Password"
                     style={{
                       paddingLeft: 20,
                       fontFamily: 'lato',
-                      color: '#fff',
+                      color: '#000',
                     }}
                     onChangeText={text => {
                       setErrorMessage(null);
@@ -434,8 +411,8 @@ function LoginScreen(props) {
               style={{
                 height: 50,
                 width: '100%',
-                borderRadius: 20,
-                backgroundColor: '#e9b04b',
+                borderRadius: 10,
+                backgroundColor: '#0065FF',
                 marginTop: 20,
                 alignItems: 'center',
                 justifyContent: 'center',
@@ -453,19 +430,19 @@ function LoginScreen(props) {
 
           )}
           <View style={{ marginTop: 15, alignItems: 'center', justifyContent: 'center' }}>
-            <Text style={{ color: '#fff', fontFamily: 'Lato' }}>OR</Text>
+            <Text style={{ color: '#627087', fontFamily: 'Lato' }}>OR</Text>
           </View>
           {updatestatus.login ? (
             <View style={{ marginTop: 15, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-              <Text style={{ color: '#fff', fontFamily: 'Lato' }}>Don't have an acount? </Text>
+              <Text style={{ color: '#627087', fontFamily: 'Lato' }}>Don't have an acount? </Text>
               <TouchableOpacity onPress={() => {
                 navigation.navigate('Register');
-              }}><Text style={{ color: '#e9b04b', fontFamily: 'Lato', fontWeight: 700 }}>Register</Text>
+              }}><Text style={{ color: '#0052CC', fontFamily: 'Lato', fontWeight: 700 }}>Register</Text>
               </TouchableOpacity>
             </View>
           ) :
             <View style={{ marginTop: 15, alignItems: 'center', justifyContent: 'center', flexDirection: 'row' }}>
-              <Text style={{ color: '#fff', fontFamily: 'Lato' }}>Back to </Text>
+              <Text style={{ color: '#627087', fontFamily: 'Lato' }}>Back to </Text>
               <TouchableOpacity onPress={() => {
                 setCodesent(false);
                 setCode('');
@@ -474,7 +451,7 @@ function LoginScreen(props) {
                   login: true,
                   forgotpassword: false,
                 })
-              }}><Text style={{ color: '#e9b04b', fontFamily: 'Lato', fontWeight: 700 }}>Login</Text>
+              }}><Text style={{ color: '#0052CC', fontFamily: 'Lato', fontWeight: 700 }}>Login</Text>
               </TouchableOpacity>
             </View>
           }

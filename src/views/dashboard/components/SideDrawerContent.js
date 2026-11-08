@@ -10,6 +10,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Fontisto from 'react-native-vector-icons/Fontisto';
+import Feather from 'react-native-vector-icons/Feather'
 import Entypo from 'react-native-vector-icons/Entypo'
 import Urls from '../../../models/Urls';
 const WIDTH = Dimensions.get('window').width;
@@ -44,7 +45,7 @@ const SideDrawerContent = props => {
             height: '20%',
             width: '100%',
             borderBottomWidth: 1,
-            borderBottomColor: '#e9b04b',
+            borderBottomColor: '#0065FF',
             justifyContent: 'center',
           }}>
           <View
@@ -61,7 +62,7 @@ const SideDrawerContent = props => {
                 justifyContent: 'space-around',
                 flexDirection: 'row',
                 alignItems: 'center',
-                backgroundColor: '#181a1b',
+                backgroundColor: '#0065FF',
               }}>
               <View style={{ alignItems: 'center' }}>
                 <Text
@@ -71,7 +72,7 @@ const SideDrawerContent = props => {
                     fontSize: 16,
                     color: '#fff',
                   }}>
-                  Favor
+                  FavourConnect
                 </Text>
                 <View
                   style={{
@@ -89,6 +90,10 @@ const SideDrawerContent = props => {
                 justifyContent: 'center',
               }}>
               <TouchableOpacity
+                onPress={() => {
+                  toggleModal();
+                  navigation.navigate('InnerProfileScreen')
+                }}
                 style={{
                   flexDirection: 'row',
                   width: '100%',
@@ -131,6 +136,14 @@ const SideDrawerContent = props => {
                       Username : {user.userName}
                     </Text>
                   </View>
+                </View>
+                <View>
+                  <MaterialIcons
+                    name="edit"
+                    size={20}
+                    color='#0065FF'
+                    style={{ marginRight: 10 }}
+                  />
                 </View>
               </TouchableOpacity>
               <View
@@ -178,7 +191,7 @@ const SideDrawerContent = props => {
                   <MaterialIcons
                     name="account-box"
                     size={22}
-                    color='#e9b04b'
+                    color='#0065FF'
                   />
                 </View>
                 <View
@@ -195,14 +208,14 @@ const SideDrawerContent = props => {
                       fontFamily: 'Lato',
                       color: '#000',
                     }}>
-                    Profile Settings
+                    Profile
                   </Text>
                 </View>
               </TouchableOpacity>
               <TouchableOpacity
                 onPress={() => {
                   toggleModal();
-                  navigation.navigate('InnerMyPostScreen');
+                  navigation.navigate('InnerAddPostScreen');
                 }}
                 style={{
                   height: (WIDTH * 15) / 100,
@@ -221,10 +234,10 @@ const SideDrawerContent = props => {
                     justifyContent: 'center',
                     alignItems: 'center',
                   }}>
-                  <Entypo
-                    name="clipboard"
+                  <Fontisto
+                    name="favorite"
                     size={22}
-                    color='#e9b04b'
+                    color='#0065FF'
                   />
                 </View>
                 <View
@@ -241,10 +254,55 @@ const SideDrawerContent = props => {
                       fontFamily: 'Lato',
                       color: '#000',
                     }}>
-                    My Posts
+                    Add Post
                   </Text>
                 </View>
               </TouchableOpacity>
+              {/* <TouchableOpacity
+                onPress={() => {
+                  navigation.navigate('InnerViewPostScreen');
+                }}
+                style={{
+                  height: (WIDTH * 15) / 100,
+                  width: '100%',
+                  backgroundColor: '#fff',
+                  elevation: 3,
+                  borderRadius: 5,
+                  marginTop: 10,
+                  flexDirection: 'row',
+                }}>
+                <View
+                  style={{
+                    height: '100%',
+                    width: '20%',
+                    borderRadius: 5,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                  }}>
+                  <Feather
+                    name="book-open"
+                    size={22}
+                    color='#0065FF'
+                  />
+                </View>
+                <View
+                  style={{
+                    height: '100%',
+                    width: '60%',
+                    borderRadius: 5,
+                    justifyContent: 'center',
+                    marginLeft: 10,
+                  }}>
+                  <Text
+                    style={{
+                      fontSize: 14,
+                      fontFamily: 'Lato',
+                      color: '#000',
+                    }}>
+                    View Post
+                  </Text>
+                </View>
+              </TouchableOpacity> */}
               <TouchableOpacity
                 onPress={() => {
                   toggleModal();
@@ -270,7 +328,7 @@ const SideDrawerContent = props => {
                   <MaterialCommunityIcons
                     name="security"
                     size={22}
-                    color='#e9b04b'
+                    color='#0065FF'
                   />
                 </View>
                 <View
@@ -316,7 +374,7 @@ const SideDrawerContent = props => {
                   <Entypo
                     name="log-out"
                     size={22}
-                    color='#e9b04b'
+                    color='#0065FF'
                   />
                 </View>
                 <View

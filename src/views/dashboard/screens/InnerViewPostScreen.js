@@ -69,14 +69,14 @@ function InnerViewPostScreen(props) {
       }}>
       <StatusBar
         animated={true}
-        backgroundColor={'#181a1b'}
+        backgroundColor={'#0065FF'}
         hidden={false}
       />
       <View
         style={{
           height: (HEIGHT * 8) / 100,
           width: WIDTH,
-          backgroundColor: '#181a1b',
+          backgroundColor: '#0065FF',
           flexDirection: 'row',
           paddingHorizontal: 10,
         }}>
@@ -397,10 +397,10 @@ function InnerViewPostScreen(props) {
                     alignItems: 'center',
                     height: 50,
                     width: 200,
-                    borderRadius: 50,
+                    borderRadius: 15,
                     alignSelf: 'center',
                     marginTop: 20,
-                    backgroundColor: '#e9b04b'
+                    backgroundColor: '#0065FF'
                   }}>
                   <View style={{ paddingLeft: 0 }}>
                     <Text style={{ fontSize: 18, color: '#fff' }}>Contact</Text>
